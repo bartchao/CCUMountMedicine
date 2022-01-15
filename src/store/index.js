@@ -6,6 +6,11 @@ const store = createStore({
         initData:null,
         medicineData:null
     },
+    getters:{
+      getMedicineData:state =>{
+        return state.medicineData
+      }
+    },
     mutations: {
       // 將state設定為參數
       configure(state,data){
@@ -14,6 +19,11 @@ const store = createStore({
       },
       setMedicineData(state,data){
         state.medicineData = data
+      },
+      clearData(state){
+        state.isConfigured = false,
+        state.initData = null,
+        state.medicineData = null
       }
     }
 

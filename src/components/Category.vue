@@ -2,7 +2,7 @@
 <template v-for="cat in data" v-bind:key="cat.category">
         <h3 style="padding:20px"><b>{{ cat.category}}</b></h3>
         <div class="row gx-4 gy-2" >
-            <Card v-for="item in cat.item" :key="item.title" :title="item.title" :text="item.text" :subtitle="item.subtitle"  :count="item.value" @update="updateValue"/> 
+            <Card v-for="item in cat.item" :key="item.title" :title="item.title" :text="item.text" :subtitle="item.subtitle" :defaultValue="item.defaultValue" :count="item.value" :formula="item.count" @update="updateValue"/> 
         </div>
 </template>
     <div class="py-5">  
@@ -17,16 +17,27 @@ export default {
     props:{
     },
     created(){
-        this.data.forEach(element => {
-            let items = element.item
-            items.forEach(item =>{
-                item.value = this.calc(item.count)
-            })
-        });
+        if(!this.data){
+            alert(`hello`)
+            this.data = []
+            let initData = MedicineData.medicine
+            for(let i = 0;i<initData.length;i++){
+                if(initData[i].attitude<=this.attitude){
+                    let items = initData[i].item
+                    items.forEach(item =>{
+                        item.value = this.calc(item.count)
+                        item.defaultValue = this.calc(item.count)
+                    })
+                    this.data.push(initData[i])
+                }
+            }
+            console.log(this.data)
+        }
+        
     },
     data(){
         return{
-            data:MedicineData.medicine,
+            data:this.$store.state.medicineData,
             name:this.$store.state.initData[0],
             days:this.$store.state.initData[1],
             person:this.$store.state.initData[2],
@@ -38,6 +49,7 @@ export default {
         calc:function(formula){
             let person = parseInt(this.person)
             let days = parseInt(this.days)
+            let high = this.attitude>=2500 ? 1:0
             return eval(formula)
         },
         updateValue(val){
@@ -60,11 +72,13 @@ export default {
             }
         },
         submit(){
+            console.log(`submit`)
+            console.log(this.data)
             this.$store.commit('setMedicineData',this.data)
             this.$router.push({
-                name:'result'
+                path:'/result'
             })
-        }
+        },
     }
 }
 </script>

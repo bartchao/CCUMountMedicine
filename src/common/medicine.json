@@ -1,7 +1,38 @@
 {
-  "medicine": 
-    [{
+  "medicine": [
+    {
+      "category": "高山症用藥",
+      "attitude":2500,
+      "item": [
+        {
+          "title": "丹木斯",
+          "subtitle": "Acetazolamide 250mg",
+          "text": "高山症 (預防：125mg/12hr，治療輕度AMS每12小時1~2顆(250~500mg/12hr)",
+          "count": "((days+0.5)*person)*high"
+        },
+        {
+          "title": "鈣離子阻斷劑",
+          "subtitle": "Nifedipine OROS 30mg",
+          "text": "高山肺水腫：每12小時1顆(30mg/12hr)",
+          "count": "days*(person/8)*2*high"
+        },
+        {
+          "title": "高山症用類固醇",
+          "subtitle": "Dexamethasone 0.5mg/tab",
+          "text": "預防高山症用藥(無法服用丹木斯) 4mg/12小時 (1人整趟行程量)",
+          "count": "(days+0.5)*8*(person/8)*high"
+        },
+        {
+          "title": "高山症用類固醇",
+          "subtitle": "Dexamethasone 0.5mg/tab",
+          "text": "治療高山症/高海拔腦水腫（1/8總人數）第一次8mg 之後4mg/6hr     ",
+          "count": "(((days-0.5)*8*4)+16)*(person/8)*high"
+        }
+      ]
+    },
+    {
       "category": "內用藥",
+      "attitude":-1,
       "item": [
         {
           "title": "暈車藥",
@@ -33,13 +64,13 @@
           "text": "一日2次 整粒吞服不可咬啐",
           "count": "days*(person/8)*2"
         },
-		    {
+        {
           "title": "抗組織胺",
           "subtitle": "Certirizine  Dihydrochloride 10mg",
           "text": "每天2顆(20mg/24hr)  副作用(嗜睡、全身無力)半顆",
           "count": "days*(person/8)*2"
         },
-		    {
+        {
           "title": "類固醇",
           "subtitle": "Predinisolone 5mg",
           "text": "腎上腺皮質功能不全、高血鈣、類風濕性關節炎、皮膚炎、眼睛發炎、哮喘 每日3-4次",
@@ -49,6 +80,7 @@
     },
     {
       "category": "外用藥",
+      "attitude":-1,
       "item": [
         {
           "title": "抗生素軟膏",
@@ -80,11 +112,11 @@
           "text": "清洗傷口、沖洗眼睛",
           "count": "(person/8*6)+((days-2)*3)"
         }
-		    
       ]
     },
     {
       "category": "外用醫療器材",
+      "attitude":-1,
       "item": [
         {
           "title": "硬蜱拔除器",
@@ -182,11 +214,7 @@
           "text": "",
           "count": "1"
         }
-        
-		    
       ]
     }
-
   ]
-
 }

@@ -8,7 +8,8 @@ const routes = [
   {
     path: '/',
     name: 'startpage',
-    component: StartPage
+    component: StartPage,
+    meta: {title: '醫藥產生器'}
   },
   {
     path: '/calculate',
@@ -17,7 +18,8 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component:CalculatePage,
-    props:(route) => route.params
+    props:(route) => route.params,
+    meta: {title: '醫藥產生器'}
   },
   {
     path: '/result',
@@ -26,7 +28,8 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component:ResultPage,
-    props:(route) => route.params
+    props:(route) => route.params,
+    meta: {title: '醫藥產生器'}
   },
   {
     // 会匹配所有路径
@@ -43,7 +46,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   let checkValid = store.state.isConfigured
-  if (to.name === 'calculate' && !checkValid) next({ name: 'startpage' })
+  if (to.path !== '/' && checkValid == false) next({ path: '/' })
   else next()
+  window.document.title = to.meta.title;
+  window.scroll(0,0)
 })
+
 export default router
