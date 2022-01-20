@@ -60,7 +60,7 @@
         <div class="form-submit">
           <input
             type="submit"
-            class="w-100 btn btn-lg btn-primary"
+            class="w-100 btn btn-lg btn-success"
             value="Next"
           />
         </div>

@@ -9,9 +9,11 @@
     <h1>設定攜帶藥物數量</h1>
     <hr />
     <team-info></team-info>
+    <div class="row">
     <category v-for="item in data" :key="item.category" :categoryData="item" @update="updateCategory"></category>
+    </div>
     <div class="py-5">
-      <button class="w-50 btn btn-primary" @click.prevent="submit" id="submit">
+      <button class="w-50 btn btn-success" @click.prevent="submit" id="submit">
         送出
       </button>
     </div>

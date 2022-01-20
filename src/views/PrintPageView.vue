@@ -68,7 +68,7 @@
             <p>資料產生時間：{{new Date().toLocaleString()}}</p>
         </div>
     </div>
-    <button class="btn btn-primary " @click="print" id="printBtn">列印/匯出PDF</button>
+    <button class="btn btn-success " @click="print" id="printBtn">列印/匯出PDF</button>
     </body>
 </template>
 <script>

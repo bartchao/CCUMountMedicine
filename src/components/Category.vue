@@ -1,19 +1,27 @@
 <template>
-  <h3 style="padding: 20px">
-    <b>{{ data.category }}</b>
-  </h3>
-  <div class="row gx-4 gy-2">
-    <Card
-      v-for="item in data.item"
-      :key="item.title"
-      :title="item.title"
-      :text="item.text"
-      :subtitle="item.subtitle"
-      :defaultValue="item.defaultValue"
-      :count="item.value"
-      :formula="item.count"
-      @update="updateValue"
-    />
+  <div class="py-3 col-md-6">
+    <div class="card ">
+      <h5 class="card-header" @click="changeShow">
+        <i v-if="show" class="bi bi-caret-up-fill"></i>
+        <i v-if="!show" class="bi bi-caret-down-fill"></i
+        ><b>{{ data.category }}</b>
+      </h5>
+      <div class="card-body" v-show="show">
+        <div class="row gx-4 gy-2">
+          <Card
+            v-for="item in data.item"
+            :key="item.title"
+            :title="item.title"
+            :text="item.text"
+            :subtitle="item.subtitle"
+            :defaultValue="item.defaultValue"
+            :count="item.value"
+            :formula="item.count"
+            @update="updateValue"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -23,10 +31,7 @@ export default {
   data() {
     return {
       data: this.categoryData,
-      name: this.$store.state.initData[0],
-      days: this.$store.state.initData[1],
-      person: this.$store.state.initData[2],
-      attitude: this.$store.state.initData[3],
+      show: true,
     };
   },
   props: {
@@ -45,6 +50,9 @@ export default {
       } else {
         console.log(`error`);
       }
+    },
+    changeShow() {
+      this.show = !this.show;
     },
   },
 };
