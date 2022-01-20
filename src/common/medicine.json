@@ -8,25 +8,25 @@
           "title": "丹木斯",
           "subtitle": "Acetazolamide 250mg",
           "text": "高山症 (預防：125mg/12hr，治療輕度AMS每12小時1~2顆(250~500mg/12hr)",
-          "count": "((days+0.5)*person)*high"
+          "count": "((days+0.5)*person)"
         },
         {
           "title": "鈣離子阻斷劑",
           "subtitle": "Nifedipine OROS 30mg",
           "text": "高山肺水腫：每12小時1顆(30mg/12hr)",
-          "count": "days*(person/8)*2*high"
+          "count": "days*(person/8)*2"
         },
         {
           "title": "高山症用類固醇",
           "subtitle": "Dexamethasone 0.5mg/tab",
           "text": "預防高山症用藥(無法服用丹木斯) 4mg/12小時 (1人整趟行程量)",
-          "count": "(days+0.5)*8*(person/8)*high"
+          "count": "(days+0.5)*8*(person/8)"
         },
         {
           "title": "高山症用類固醇",
           "subtitle": "Dexamethasone 0.5mg/tab",
           "text": "治療高山症/高海拔腦水腫（1/8總人數）第一次8mg 之後4mg/6hr     ",
-          "count": "(((days-0.5)*8*4)+16)*(person/8)*high"
+          "count": "(((days-0.5)*8*4)+16)*(person/8)"
         }
       ]
     },

@@ -16,7 +16,7 @@
                     </template>
                 </VDropdown>
             <button class="btn btn-outline-secondary inputGroup" type="button" id="button-minus" @click="minus()">-</button>
-            <input type="text" class="form-control text-center inputGroup" id="countInput" placeholder="" :value="dcount"  aria-describedby="button-addon2">
+            <input type="text" inputmode="numeric" class="form-control text-center inputGroup btn-outline-secondary " :class="{ modified: modified }" id="countInput" placeholder="" :value="dcount"  aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary inputGroup" type="button" id="button-plus" @click="plus()">+</button>       
             <button type="button" class="btn btn-warning btn-outline-secondary inputGroup " id="resetBtn" @click="reset">重設</button>
         </div>
@@ -41,9 +41,14 @@ export default {
         count:Number,
         formula:String
     },
+    created(){
+        this.modified = (this.count != this.defaultValue)
+
+    },
     data(){
         return{
-            dcount:this.count
+            dcount:this.count,
+            modified:false
         }
     },
     //components:{VueNumberInput},
@@ -68,8 +73,8 @@ export default {
     watch:{
         dcount:{
             handler(val){
+                this.modified = (val != this.defaultValue)
                 let returnValue = {title:this.title,value:val}
-                
                 this.$emit('update',returnValue);
             }
         }
@@ -81,12 +86,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #countInput{
-    max-width: 50px;
+    max-width: 70px;
 }
 .inputGroup{
     max-height: 50px;
+}
+.modified{
+    background-color: rgba(255, 80, 80, 0.801);
 }
 
 </style>

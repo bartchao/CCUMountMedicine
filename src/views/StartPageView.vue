@@ -51,7 +51,6 @@
             id="attitude"
             placeholder="最高高度"
             v-model="attitude"
-            step="500"
             min="0"
             required
           />
@@ -118,6 +117,7 @@ export default {
 html,
 body {
   height: 100%;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 body {
